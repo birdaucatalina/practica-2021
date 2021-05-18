@@ -37,20 +37,20 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         if ($request->isMethod('post')) {
-            $this->validate($request, [
+            $request->validate([
                 'email' => 'required|email',
                 'password' => 'required'
             ]);
 
             $user = $this->service->loginUser($request);
-    
+
             if (!$user) {
                 return redirect(route('login'))->withErrors([
                     'login' => 'Email or password is incorrect!'
                 ])->withInput();
             }
 
-            return redirect(route('/dashboard'));
+            return redirect(route('dashboard'));
         }
 
         if (Auth::check()) {
@@ -67,12 +67,7 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        //TODO
         if ($request->isMethod('post')) {
-            //validate request
-            //create user
-            //login user or send activate email
-            //redirected to dashboard/login
             $request->validate([
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email',
@@ -89,7 +84,6 @@ class AuthController extends Controller
             return redirect(route('dashboard'));
         }
 
-        //return view register
         return view('auth/register');
     }
 
