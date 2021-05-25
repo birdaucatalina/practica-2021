@@ -26,7 +26,14 @@
             <div class="card-header">
                 <h3 class="card-title">Boards list</h3>
             </div>
-
+            <div class="card-header">
+            <button class="btn btn-sm btn-primary"
+                    type="button"
+                    data-board="{{json_encode($boards)}}"
+                    data-toggle="modal"
+                    data-target="#boardAddModal">
+                <i class="fas fa-plus"></i> Add Board </button>
+            </div>
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>

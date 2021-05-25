@@ -251,4 +251,16 @@ class BoardController extends Controller
 
         return response()->json(['error' => $error, 'success' => $success]);
     }
+
+    public function addBoard(Request $request)
+    {
+        $user = Auth::user();
+
+        return response()->json(["error"=>$error , "success"=>$success]);
+    }
+
+    public function addTask(Request $request, $id)
+    {
+        return response()->json(["error"=>$error , "success"=>$success]);
+    }
 }
